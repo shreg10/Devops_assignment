@@ -5,6 +5,7 @@ metadata:
 
 spec:
   replicas: {{ .Values.replicaCount }}
+  serviceAccountName: backend-sa  
 
   selector:
     matchLabels:
