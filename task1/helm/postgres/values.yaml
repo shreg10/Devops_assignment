@@ -1,0 +1,16 @@
+image:
+  repository: postgres
+  tag: "15"
+
+storage: 1Gi
+
+secret:
+  password: devpass
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
