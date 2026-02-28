@@ -17,7 +17,7 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "backend-role"
-        vault.hashicorp.com/agent-inject-secret-db: "secret/db"
+        vault.hashicorp.com/agent-inject-secret-db: "secret/data/db"
 
     spec:
       serviceAccountName: backend-sa
