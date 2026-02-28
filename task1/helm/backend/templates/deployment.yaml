@@ -18,7 +18,6 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "backend-role"
         vault.hashicorp.com/agent-inject-secret-db: "secret/data/db"
-        vault.hashicorp.com/agent-inject-template-db: |
           {{- with secret "secret/data/db" -}}
           password={{ .Data.data.password }}
           {{- end }}
