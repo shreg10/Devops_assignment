@@ -2,7 +2,7 @@ image:
   repository: frontend
   tag: v1
 
-replicaCount: 2
+replicaCount: 3
 
 service:
   type: ClusterIP

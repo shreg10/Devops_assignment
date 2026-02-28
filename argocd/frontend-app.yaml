@@ -8,7 +8,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/shreg10/Devops-assignment.git
+    repoURL: https://github.com/shreg10/Devops_assignment.git
     targetRevision: main
     path: task1/helm/frontend
 
