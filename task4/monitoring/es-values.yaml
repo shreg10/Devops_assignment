@@ -1,0 +1,14 @@
+replicas: 1
+
+protocol: http
+
+esConfig:
+  elasticsearch.yml: |
+    discovery.type: single-node
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    memory: 1Gi
