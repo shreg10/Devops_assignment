@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'task1/backend/**'
-      - '.github/workflows/backend.yml'
 
 jobs:
   build:
@@ -21,10 +20,25 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build image
-      run: |
-        docker build -t shreg10/backend:latest task1/backend
+    - name: Set tag
+      run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-    - name: Push image
+    - name: Build
       run: |
-        docker push shreg10/backend:latest
+        docker build -t shreg10/backend:$TAG task1/backend
+
+    - name: Push
+      run: |
+        docker push shreg10/backend:$TAG
+
+    - name: Update Helm values
+      run: |
+        sed -i "s/tag:.*/tag: $TAG/" task1/helm/backend/values.yaml
+
+    - name: Commit values change
+      run: |
+        git config user.name github-actions
+        git config user.email github@github.com
+        git add task1/helm/backend/values.yaml
+        git commit -m "update backend image $TAG"
+        git push
